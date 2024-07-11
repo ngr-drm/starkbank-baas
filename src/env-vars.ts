@@ -18,4 +18,6 @@ export const vars = {
   NAME: env.get('NAME').required().asString(),
   TAX_ID: env.get('TAX_ID').required().asString(),
   ACCOUNT_TYPE: env.get('ACCOUNT_TYPE').required().asString(),
+  INVOICE_CRON_JOB_EXPRESSION: env.get('INVOICE_CRON_JOB_EXPRESSION').required().asString(),
+  CREDIT_CRON_JOB_EXPRESSION: env.get('CREDIT_CRON_JOB_EXPRESSION').required().asString(),
 };

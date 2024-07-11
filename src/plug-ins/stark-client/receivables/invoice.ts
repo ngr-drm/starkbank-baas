@@ -8,7 +8,7 @@ export function newInvoiceInstance(amount: number, taxId: string, name: string) 
     name: name,
   });
 }
-export async function create(batch: starkbank.Invoice[]) {
+export async function createInvoice(batch: starkbank.Invoice[]) {
   try {
     if (batch.length > 100) {
       throw new Error('it is not possible to create 100 new invoices at once');

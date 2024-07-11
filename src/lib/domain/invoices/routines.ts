@@ -1,13 +1,10 @@
 import cron from 'node-cron';
-import { invoiceBatchWorker } from './fixtures';
-
-const INVOICE_CRON_JOB_EXPRESSION = '0 0,3,6,9,12,15,18,21,23 * * *';
-const CREDIT_CRON_JOB_EXPRESSION = '0 */1 * * *';
-const test = '*/1 * * * *';
+import { invoiceBatchWorker, creditTransferWorker } from './fixtures';
+import { vars } from '../../../env-vars';
 
 export async function invoiceBatch(toggle: boolean) {
   const task = cron.schedule(
-    test,
+    vars.INVOICE_CRON_JOB_EXPRESSION,
     async () => {
       await invoiceBatchWorker();
     },
@@ -28,9 +25,9 @@ export async function invoiceBatch(toggle: boolean) {
 
 export async function creditTransfer(toggle: boolean) {
   const task = cron.schedule(
-    test,
+    vars.CREDIT_CRON_JOB_EXPRESSION,
     async () => {
-      // await generateBatchOfInvoices();
+      await creditTransferWorker(true); // para eventos entregues ao webhook
     },
     {
       scheduled: false,

@@ -21,3 +21,20 @@ export async function save(invoice: Invoices) {
     client.release();
   }
 }
+
+export async function update(invoice: Partial<Invoices>) {
+  const client = await dbConn();
+
+  const query = {
+    text: `UPDATE invoices SET status = $1
+    WHERE "invoiceId" = $2;`,
+    values: [invoice.status, invoice.invoiceId],
+  };
+  try {
+    await client.query(query);
+  } catch (err) {
+    throw err;
+  } finally {
+    client.release();
+  }
+}

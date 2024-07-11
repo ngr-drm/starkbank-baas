@@ -1,17 +1,15 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { creditTransfer, invoiceBatch } from './domain/invoices/routines';
-import { listLogEvents } from './domain/invoices/fixtures';
+import { creditTransferWorker, listLogEvents } from './domain/invoices/fixtures';
 import { Feature } from './domain/value-objects';
 
 async function routes(fastify: any) {
   fastify.post('/invoices/routines/batch', async (request: FastifyRequest, reply: FastifyReply) => {
     try {
-      //const feature = request.body as Feature;
-      //await invoiceBatch(feature.toggle);
+      const feature = request.body as Feature;
+      await invoiceBatch(feature.toggle);
 
-      await listLogEvents(true);
-
-      reply.log.info('worker called successfully...');
+      reply.log.info('invoice batch: worker called successfully...');
       return reply.code(201).send();
     } catch (error) {
       reply.log.error(error);
@@ -23,7 +21,7 @@ async function routes(fastify: any) {
       const feature = request.body as Feature;
       await creditTransfer(feature.toggle);
 
-      reply.log.info('scheduler called successfully...');
+      reply.log.info('credit transfer: worker called successfully...');
       return reply.code(201).send();
     } catch (error) {
       reply.log.error(error);
