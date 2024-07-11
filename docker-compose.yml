@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: db
+    restart: unless-stopped
+    env_file: ./.env
+
+    environment:
+      POSTGRES_PASSWORD: $PG_PASSWORD
+      POSTGRES_DB: $PG_DATABASE
+
+    ports:
+      - $PG_PORT:$PG_PORT
+
+  app:
+    container_name: stark-bank
+    build: ./
+    env_file: ./.env
+
+    environment:
+      - PG_HOST=$PG_HOST_DOCKER
+      - PG_USER=$PG_USER
+      - PG_PASSWORD=$PG_PASSWORD
+      - PG_DATABASE=$PG_DATABASE
+      - PG_PORT=$PG_PORT
+      - API_PORT=$API_PORT
+      - SANDBOX_PRIVATE_KEY=$SANDBOX_PRIVATE_KEY
+      - SANDBOX_PROJECT_ID=$SANDBOX_PROJECT_ID
+      - SANDBOX_BASE_URL=$SANDBOX_BASE_URL
+      - MIN_NUMBER_INVOICE=$MIN_NUMBER_INVOICE
+      - MAX_NUMBER_INVOICE=$MAX_NUMBER_INVOICE
+      - BANK_CODE=$BANK_CODE
+      - BRANCH=$BRANCH
+      - ACCOUNT=$ACCOUNT
+      - NAME=$NAME
+      - TAX_ID=$TAX_ID
+      - ACCOUNT_TYPE=$ACCOUNT_TYPE
+
+    ports:
+      - 3000:3000
+
+    volumes:
+      - ./:/src/
+      - nodemodules:/src/node_modules
+
+    links:
+      - db
+    depends_on:
+      - db
+
+volumes:
+  nodemodules: {}

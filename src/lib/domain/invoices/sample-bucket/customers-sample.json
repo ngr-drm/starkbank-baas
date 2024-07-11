@@ -1,0 +1,14 @@
+{
+  "customers": [
+    { "name": "Adryan Alencar", "taxId": "03.631.207/0001-52" },
+    { "name": "Allan Rima", "taxId": "532.300.562-99" },
+    { "name": "Angelo Eyre", "taxId": "575.607.846-07" },
+    { "name": "Alease Petre", "taxId": "179.366.688-10" },
+    { "name": "Amanda Bruno", "taxId": "875.572.503-11" },
+    { "name": "Ardelle Slentz", "taxId": "26.701.255/0001-75" },
+    { "name": "Anna Strong", "taxId": "19.681.018/0001-24" },
+    { "name": "Amelia Grubaugh", "taxId": "729.440.314-73" },
+    { "name": "Alec Sandoval", "taxId": "07.906.335/0001-12" },
+    { "name": "Amy Rameriez", "taxId": "086.776.107-58" }
+  ]
+}
