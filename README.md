@@ -87,6 +87,6 @@ _A prioridade foi testar as funções puras. Mas testes de integração deveriam
 
 Apesar de não ser um requisito, foi adicionado uma camada de persistência para realizar a conciciliação do ciclo de vida das faturas. Toda vez que temos um evento de fatura elegível para transferência de crédito, o status é atualizado na base da aplicação.
 
-**_importante:_** não foi possível salvar os dados de transferência de crédito para posterior conciliação, uma falha é reportada pela API do starkbank (SDK Node.js) ao tentar criar as transferências. Um log de erro é gerado para ajudar na depuração (path do arquivo: node_modules/starkcore/starkcore/utils/rest.js:165:24).
+**_importante:_** não foi possível salvar os dados de transferência de crédito para posterior conciliação, uma falha é reportada pela API do starkbank (SDK Node.js) ao tentar criar as transferências. Um log de erro é gerado para ajudar na depuração.
 
 Na raiz do projeto você vai encontrar um arquivo chamado **_starkbank-baas.postman.json_**. Basta importá-lo no Postman para obter as informações das rotas e realizar os testes funcionais. As rotas usam uma abordagem de "feature-toggle", para ligar ou desligar uma rotina.
