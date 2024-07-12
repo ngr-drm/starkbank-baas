@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "351c2ba6-8ed1-413a-89f5-573e6c6dcb32",
+		"name": "starkbank-baas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35095570"
+	},
+	"item": [
+		{
+			"name": "invoices",
+			"item": [
+				{
+					"name": "batch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"toggle\": true \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/invoices/routines/batch",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"invoices",
+								"routines",
+								"batch"
+							]
+						},
+						"description": "dispara rotina de emissão de faturas"
+					},
+					"response": []
+				},
+				{
+					"name": "credit transfer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"toggle\": true \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/invoices/routines/credit-transfer",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"invoices",
+								"routines",
+								"credit-transfer"
+							]
+						},
+						"description": "dispara rotina de monitoramento de eventos e transferência de crédito"
+					},
+					"response": []
+				}
+			],
+			"description": "desafio técnico starkbank"
+		}
+	]
+}
