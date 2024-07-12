@@ -1,6 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { creditTransfer, invoiceBatch } from './domain/invoices/routines';
-import { creditTransferWorker, listLogEvents } from './domain/invoices/fixtures';
 import { Feature } from './domain/value-objects';
 
 async function routes(fastify: any) {
@@ -10,7 +9,7 @@ async function routes(fastify: any) {
       await invoiceBatch(feature.toggle);
 
       reply.log.info('invoice batch: worker called successfully...');
-      return reply.code(201).send();
+      return reply.code(200).send();
     } catch (error) {
       reply.log.error(error);
       return reply.code(500).send({ message: 'internal server error...' });
@@ -22,7 +21,7 @@ async function routes(fastify: any) {
       await creditTransfer(feature.toggle);
 
       reply.log.info('credit transfer: worker called successfully...');
-      return reply.code(201).send();
+      return reply.code(200).send();
     } catch (error) {
       reply.log.error(error);
       return reply.code(500).send({ message: 'internal server error...' });
