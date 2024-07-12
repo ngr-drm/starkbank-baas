@@ -89,4 +89,5 @@ Apesar de não ser um requisito, foi adicionado uma camada de persistência para
 
 **_importante:_** não foi possível salvar os dados de transferência de crédito para posterior conciliação, uma falha é reportada pela API do starkbank (SDK Node.js) ao tentar criar as transferências. Um log de erro é gerado para ajudar na depuração.
 
-Na raiz do projeto você vai encontrar um arquivo chamado **_starkbank-baas.postman.json_**. Basta importá-lo no Postman para obter as informações das rotas e realizar os testes funcionais. As rotas usam uma abordagem de "feature-toggle", para ligar ou desligar uma rotina.
+Na raiz do projeto você vai encontrar um arquivo chamado **_starkbank-baas.postman.json_**. Basta importá-lo no Postman para obter as informações das rotas e realizar os testes funcionais.
+As rotas usam uma abordagem de "feature-toggle", para ligar ou desligar uma rotina.
