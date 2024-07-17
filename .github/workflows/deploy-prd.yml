@@ -1,0 +1,27 @@
+name: deploy production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: checkout source
+        uses: actions/checkout@v3
+      - name: login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: build docker image
+        run: docker build -t sure44e/starkbank-baas-app .
+      - name: publish image to docker hub
+        run: docker push sure44e/starkbank-baas-app:latest
+
+  deploy:
+    needs: build
+    runs-on: [aws-ec2]
+    steps:
+      - name: pull image from docker hub
+        run: docker pull starkbank-baas-app:latest
+      - name: run app
+        run: docker-compose up --build
