@@ -24,4 +24,4 @@ jobs:
       - name: pull image from docker hub
         run: docker pull sure44e/starkbank-baas-app:latest
       - name: run app
-        run: sudo docker compose up -d
+        run: sudo docker run -d sure44e/starkbank-baas-app:latest
