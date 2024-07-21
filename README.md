@@ -19,7 +19,7 @@ Essa aplicação usa como base o padrão de arquitetura de Microkernel e o parad
 - execute o comando abaixo para subir a aplicação
 
 ```zsh
-  docker-compose up -d --build
+  docker compose up -d --build
 ```
 
 #

@@ -11,6 +11,5 @@ RUN npm i --silent
 
 ADD . /src
 
-COPY .env .env
 
 CMD ["sh", "run.sh"]
